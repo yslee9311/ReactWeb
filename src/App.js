@@ -21,10 +21,42 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>{this.state.hello}</div>
-        <button onClick={this.handleChange}>Click Me</button>
-        <div>{this.state.count}</div>
-        <button onClick={this.countUp}>Click Me</button>
+        <h3>Index Props</h3>
+        <div className='props'>
+          <span>{this.props.message}</span>
+        </div>
+
+        <h3>States</h3>
+        <div className='states'>
+          <div>
+            {this.state.hello}
+            <button onClick={this.handleChange}>Click Me</button>
+          </div>
+          <div>
+            {this.state.count}
+            <button onClick={this.countUp}>Click Me</button>
+          </div>
+        </div>
+
+        <h3>App Props</h3>
+        <div className='inside-app-props'>
+          <InsideApp
+            count={this.state.count}
+            handleChange={this.countUp} />
+        </div>
+      </div>
+    )
+  }
+}
+
+
+class InsideApp extends Component {
+  render() {
+    console.log('2222', this.props);
+    return (
+      <div>
+        {this.props.count}
+        <button onClick={this.props.handleChange}>Click Me</button>
       </div>
     )
   }
