@@ -1,9 +1,30 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  state = {
-    hello: 'hello app js!',
-    count: 0,
+  constructor(props) {
+    super(props);
+    this.TAG = 'App'
+    console.log(this.TAG, 'constructor: 클래스의 시작');
+    this.state = {
+      hello: 'hello app js!',
+      count: 0,
+    };
+  }
+
+  componentDidMount = () => {
+    console.log(this.TAG, 'componentDidMount');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.TAG, 'componentDidUpdate: 컴포넌트가 업데이트 됨');
+    // 업데이트 되기 전 state
+    console.log(this.TAG, '업데이트 전', prevState);
+    // 업데이트 된 후의 현재 state
+    console.log(this.TAG, '업데이트 후', this.state);
+  }
+
+  componentWillUnmount = () => {
+    console.log(this.TAG, 'componentWillUnmount');
   }
 
   handleChange = () => {
@@ -19,8 +40,9 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.TAG, 'render');
     return (
-      <div className="App">
+      <div className='App'>
         <h3>Index Props</h3>
         <div className='props'>
           <span>{this.props.message}</span>
@@ -51,8 +73,14 @@ class App extends Component {
 
 
 class InsideApp extends Component {
+  constructor(props) {
+    super(props);
+    this.TAG = 'InsideApp'
+    console.log(this.TAG, 'constructor: 클래스의 시작');
+  }
+
   render() {
-    console.log('2222', this.props);
+    console.log(this.TAG, 'render');
     return (
       <div>
         {this.props.count}
