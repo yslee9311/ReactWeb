@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import PhoneInfo from './PhoneInfo';
 
 class PhoneInfoList extends Component {
+    Tag = 'PhoneInfoList'
     static defaultProps = {
         data: [],
         onRemove: () => console.warn('onRemove not defined'),
         onUpdate: () => console.warn('onUpdate not defined'),
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log(this.Tag, 'shouldComponentUpdate return', nextProps.data !== this.props.data);
+        return nextProps.data !== this.props.data;
+    }
+
     render() {
+        console.log('render PhoneInfoList');
         const { data, onRemove, onUpdate } = this.props;
         const list = data.map(
             info => (
