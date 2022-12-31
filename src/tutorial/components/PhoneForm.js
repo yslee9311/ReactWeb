@@ -7,7 +7,6 @@ class PhoneForm extends Component {
     }
 
     handleChange = (e) => {
-        console.log('handleChange', e.target);
         this.setState({
             [e.target.name]: e.target.value
         })
