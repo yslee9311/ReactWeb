@@ -1,14 +1,17 @@
 import React from 'react';
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
+import { SampleProvider } from './contexts/sample';
 import './index.css'
 
 const App = () => {
     return (
-        <div className="panes">
-            <LeftPane />
-            <RightPane />
-        </div>
+        <SampleProvider>
+            <div className="panes">
+                <LeftPane />
+                <RightPane />
+            </div>
+        </SampleProvider>
     );
 };
 
